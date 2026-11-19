@@ -1,0 +1,30 @@
+name: Devin Max Auto-Build & Test
+
+on:
+  push:
+    branches: [ "main", "feature/*" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test-and-heal:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        
+    - name: Install Dependencies
+      run: npm install # 假设用 ts-node/jest 测试
+      
+    - name: Run Unit Tests (由 Devin 编写)
+      run: npm test 
+      
+    # 如果测试失败，触发 Devin 自愈机制
+    - name: Trigger Devin Max Auto-Fix
+      if: failure()
+      run: |
+        echo "Tests failed. Alerting Devin Max to analyze logs and submit a fix PR..."

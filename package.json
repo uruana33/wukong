@@ -1,0 +1,11 @@
+{
+  "name": "devin-action-engine",
+  "version": "1.0.0",
+  "description": "AI-Driven Action Game Core Framework",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified yet. Devin will generate tests.\" && exit 0"
+  },
+  "author": "Project Lead & Devin Max",
+  "license": "MIT"
+}
