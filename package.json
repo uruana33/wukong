@@ -1,11 +1,16 @@
 {
-  "name": "devin-action-engine",
-  "version": "1.0.0",
-  "description": "AI-Driven Action Game Core Framework",
+  "name": "wukong-action-engine",
+  "version": "0.1.0",
+  "description": "AI-Driven Action Game Core Framework (ECS + HFSM-lite combat core)",
+  "type": "module",
   "main": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified yet. Devin will generate tests.\" && exit 0"
+    "test": "tsc --noEmit",
+    "start": "node src/index.ts"
   },
   "author": "Project Lead & Devin Max",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.4.2"
+  }
 }

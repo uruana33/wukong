@@ -10,19 +10,19 @@ jobs:
   test-and-heal:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    
+    - uses: actions/checkout@v4
+
     - name: Setup Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
-        node-version: '18'
-        
+        node-version: '22'  # >=22.6 原生支持 --experimental-strip-types 运行 TS
+
     - name: Install Dependencies
-      run: npm install # 假设用 ts-node/jest 测试
-      
-    - name: Run Unit Tests (由 Devin 编写)
-      run: npm test 
-      
+      run: npm install
+
+    - name: Typecheck & Tests
+      run: npm test  # tsc --noEmit；接入单元测试后由同一入口扩展
+
     # 如果测试失败，触发 Devin 自愈机制
     - name: Trigger Devin Max Auto-Fix
       if: failure()
